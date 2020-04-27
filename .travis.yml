@@ -14,6 +14,10 @@ after_success:
   - docker build -t locvt/multi-server ./server
   - docker build -t locvt/multi-worker ./worker
 
-# Login to the docker CLI ( with setting travis setting environment DOCKER_ID and DOCKER_PASSWORD)
+# Login to the docker CLI ( with setting travis setting environment DOCKER_ID and DOCKER_PASSWORD )
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to the docker hub
+  - docker push locvt/multi-client
+  - docker push locvt/multi-nginx
+  - docker push locvt/multi-client
+  - docker push locvt/multi-worker
